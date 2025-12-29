@@ -150,3 +150,23 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Theme transition animation */
+::view-transition-old(root) {
+  animation: none;
+  z-index: 1;
+}
+
+::view-transition-new(root) {
+  animation: reveal 0.5s ease-in-out;
+  z-index: 9999;
+}
+
+@keyframes reveal {
+  from {
+    clip-path: circle(0% at var(--transition-x, calc(100% - 1.5rem)) var(--transition-y, 1.5rem));
+  }
+  to {
+    clip-path: circle(100% at var(--transition-x, calc(100% - 1.5rem)) var(--transition-y, 1.5rem));
+  }
+}
