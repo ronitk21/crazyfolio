@@ -7,12 +7,11 @@ import { useRef } from 'react';
 import { Button } from '@/components/ui/button';
 
 export function ModeToggle() {
-  const { setTheme, resolvedTheme } = useTheme();
+  const { theme, setTheme, resolvedTheme } = useTheme();
   const buttonRef = useRef<HTMLButtonElement>(null);
 
-  const toggleTheme = () => {
-    const isDark = resolvedTheme === 'dark';
-    const newTheme = isDark ? 'light' : 'dark';
+  const toggleTheme = async () => {
+    const newTheme = resolvedTheme === 'dark' ? 'light' : 'dark';
 
     // Check if View Transitions API is supported
     if (!document.startViewTransition) {
@@ -27,13 +26,23 @@ export function ModeToggle() {
       const x = rect.left + rect.width / 2;
       const y = rect.top + rect.height / 2;
 
+      // Calculate the maximum radius needed to cover the entire screen
+      const maxRadius = Math.hypot(
+        Math.max(x, window.innerWidth - x),
+        Math.max(y, window.innerHeight - y)
+      );
+
+      // Set CSS custom properties for the animation
       document.documentElement.style.setProperty('--transition-x', `${x}px`);
       document.documentElement.style.setProperty('--transition-y', `${y}px`);
+      document.documentElement.style.setProperty('--transition-radius', `${maxRadius}px`);
     }
 
-    document.startViewTransition(() => {
+    const transition = document.startViewTransition(() => {
       setTheme(newTheme);
     });
+
+    await transition.ready;
   };
 
   return (
@@ -42,9 +51,9 @@ export function ModeToggle() {
       variant="ghost"
       size="icon-sm"
       onClick={toggleTheme}
-      className="absolute right-3 top-3 z-50"
+      className="absolute right-3 top-3"
     >
-      <Sun className="absolute h-[1.2rem] w-[1.2rem] scale-100 rotate-0 transition-all dark:scale-0 dark:-rotate-90" />
+      <Sun className="h-[1.2rem] w-[1.2rem] scale-100 rotate-0 transition-all dark:scale-0 dark:-rotate-90" />
       <Moon className="absolute h-[1.2rem] w-[1.2rem] scale-0 rotate-90 transition-all dark:scale-100 dark:rotate-0" />
       <span className="sr-only">Toggle theme</span>
     </Button>
