@@ -18,7 +18,7 @@ const AboutSection = () => {
         <div className="block pt-4 lg:hidden">
           <LayoutTextFlip />
         </div>
-        <div className="hidden pt-11 sm:block">
+        <div className="hidden pt-9 sm:block">
           <SocialSection />
         </div>
       </div>
