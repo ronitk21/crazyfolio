@@ -8,11 +8,11 @@ import SocialSection from './social-section';
 
 const AboutSection = () => {
   return (
-    <div className="relative pt-38 sm:pt-52 py-4">
+    <div className="relative py-4 pt-38 sm:pt-52">
       {/* Avatar positioned relative to this container */}
       <div className="absolute top-18 left-0 z-10 flex w-full justify-between sm:top-30">
         <Avatar className="ring-muted h-36 w-36 shadow-sm ring-4 sm:h-32 sm:w-32">
-          <AvatarImage src="/profile.jpg" />
+          <AvatarImage src="/profile.webp" />
           <AvatarFallback>RT</AvatarFallback>
         </Avatar>
         <div className="block pt-4 lg:hidden">
@@ -25,7 +25,7 @@ const AboutSection = () => {
 
       <div className="my-4 space-y-3 pt-18 sm:my-5 sm:space-y-4 sm:pt-14">
         <div className="flex flex-col items-start">
-          <div className="flex items-center justify-between gap-5">
+          <div className="flex w-full items-center justify-between gap-5">
             <div className="flex items-center gap-2.5">
               <h1 className="text-[33px] font-bold sm:text-3xl">Ronit Kedia</h1>
               {/* <NameWithPronunciation /> */}
@@ -35,7 +35,7 @@ const AboutSection = () => {
             </div>
           </div>
 
-          <span className="-mt-2 text-muted-foreground block tracking-tight sm:mt-0">
+          <span className="text-muted-foreground -mt-2 block tracking-tight sm:mt-0">
             Computer Science Student | Full Stack Developer
           </span>
         </div>

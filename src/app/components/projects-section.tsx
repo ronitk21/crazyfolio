@@ -7,7 +7,7 @@ import Link from 'next/link';
 const projects = [
   {
     page: '/projects/nomoretutorials',
-    images: ['/nomoretutorials-1.png'],
+    images: ['/nomoretutorials-1.webp'],
     title: 'NoMoreTutorials',
     description:
       'An AI-powered platform that guides beginner and intermediate developers out of tutorial hell by providing personalized, mentor-style step-by-step instructions to build real, production-grade projects from scratch.',
@@ -23,7 +23,7 @@ const projects = [
   },
   {
     page: '/',
-    images: ['/portfolio1.png'],
+    images: ['/portfolio1.webp'],
     title: 'Crazyfolio',
     description:
       'An AI-powered platform that guides beginner and intermediate developers out of tutorial hell by providing personalized, mentor-style step-by-step instructions to build real, production-grade projects from scratch.',
@@ -37,7 +37,7 @@ const projects = [
   },
   {
     page: '/projects/dailytick',
-    images: ['/dailytick1.png'],
+    images: ['/dailytick1.webp'],
     title: 'DailyTick',
     description:
       'A lightweight Chrome extension that replaces the new tab with a clean daily checklist, helping users plan tasks, track goals, and stay focused through a simple, distraction-free interface with automatic daily resets and local data storage.',
@@ -50,7 +50,7 @@ const projects = [
   },
   {
     page: '/projects/tailwind-toolkit',
-    images: ['/tailwind-toolkit-1.png'],
+    images: ['/tailwind-toolkit-1.webp'],
     title: 'Tailwind Toolkit',
     description:
       'A lightweight Chrome extension that replaces the new tab with a clean daily checklist, helping users plantasks, track goals, and stay focused through a simple, distraction-free interface with automatic daily resets and local data storage',
@@ -62,7 +62,7 @@ const projects = [
   },
   {
     page: '/projects/family-vault',
-    images: ['/family-vault-1.png'],
+    images: ['/family-vault-1.webp'],
     title: 'Family Vault',
     description: 'A secure app to manage sensitive information for your entire family',
     techStack: [
@@ -73,6 +73,23 @@ const projects = [
     ],
   },
 ];
+
+const shimmer = (w: number, h: number) => `
+<svg width="${w}" height="${h}" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <defs>
+    <linearGradient id="g">
+      <stop stop-color="#333" offset="20%" />
+      <stop stop-color="#222" offset="50%" />
+      <stop stop-color="#333" offset="70%" />
+    </linearGradient>
+  </defs>
+  <rect width="${w}" height="${h}" fill="#333" />
+  <rect id="r" width="${w}" height="${h}" fill="url(#g)" />
+  <animate xlink:href="#r" attributeName="x" from="-${w}" to="${w}" dur="1s" repeatCount="indefinite"  />
+</svg>`;
+
+const toBase64 = (str: string) =>
+  typeof window === 'undefined' ? Buffer.from(str).toString('base64') : window.btoa(str);
 
 const ProjectsSection = () => {
   return (
@@ -97,10 +114,20 @@ const ProjectsSection = () => {
                 {item.images && (
                   <Image
                     src={item.images[0]}
-                    alt="project-image"
+                    alt={`${item.title} project screenshot`}
                     height={800}
                     width={800}
                     className="rounded-lg ring-[6px]"
+                    priority={index === 0}
+                    loading={index === 0 ? 'eager' : 'lazy'}
+                    sizes={
+                      index === 0
+                        ? '(max-width: 640px) 100vw, 800px'
+                        : '(max-width: 640px) 100vw, 400px'
+                    }
+                    placeholder="blur"
+                    blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(800, 600))}`}
+                    quality={80}
                   />
                 )}
               </Link>
