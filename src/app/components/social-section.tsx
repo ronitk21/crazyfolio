@@ -1,22 +1,16 @@
-import { AnimateIcon } from '@/components/animate-ui/icons/icon';
-import { PhoneCall } from '@/components/animate-ui/icons/phone-call';
 import { GithubIcon } from '@/components/GithubIcon';
 import { TwitterIcon } from '@/components/TwitterIcon';
 import { Button } from '@/components/ui/button';
 import { LinkedinIcon } from 'lucide-react';
-import Link from 'next/link';
-import { useEffect } from 'react';
+import Image from 'next/image';
 
 const SocialSection = () => {
-  useEffect(() => {
-    console.log('Rendered');
-  }, []);
   return (
-    <div className="flex flex-col items-start gap-4 py-2.5 pt-4 sm:p-0 w-full max-w-full">
-      <h1 className="block sm:hidden text-[22px] font-bold tracking-tight">Socials _</h1>
-      <div className="flex items-center gap-2 sm:gap-1.5 overflow-x-auto whitespace-nowrap w-full max-w-full pb-2 scrollbar-none [-webkit-overflow-scrolling:touch] [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+    <div className="flex w-full max-w-full flex-col items-start gap-4 py-2.5 pt-4 sm:p-0">
+      <h1 className="block text-[22px] font-bold tracking-tight sm:hidden">Socials _</h1>
+      <div className="scrollbar-none flex w-full max-w-full items-center gap-2 overflow-x-auto pb-2 whitespace-nowrap [-ms-overflow-style:none] [-webkit-overflow-scrolling:touch] [scrollbar-width:none] sm:gap-1.5 [&::-webkit-scrollbar]:hidden">
         <Button
-          className="border-border gap-2 rounded-full border p-3 shrink-0"
+          className="border-border shrink-0 gap-2 rounded-full border p-3"
           size={'sm'}
           variant={'secondary'}
         >
@@ -24,7 +18,7 @@ const SocialSection = () => {
           <a href="https://github.com/ronitk21">Github</a>
         </Button>
         <Button
-          className="border-border gap-2 rounded-full border p-3 shrink-0"
+          className="border-border shrink-0 gap-2 rounded-full border p-3"
           size={'sm'}
           variant={'secondary'}
         >
@@ -33,7 +27,7 @@ const SocialSection = () => {
         </Button>
 
         <Button
-          className="border-border gap-2 rounded-full border p-3 shrink-0"
+          className="border-border shrink-0 gap-2 rounded-full border p-3"
           size={'sm'}
           variant={'secondary'}
         >
@@ -41,14 +35,18 @@ const SocialSection = () => {
           <a href="https://x.com/ronitk21">X/Twitter</a>
         </Button>
         <Button
-          className="border-border gap-2 rounded-full border p-3 shrink-0"
+          className="border-border shrink-0 gap-2 rounded-full border p-3"
           size={'sm'}
           variant={'secondary'}
         >
-          <AnimateIcon animateOnHover>
-            <PhoneCall />
-          </AnimateIcon>
-          <Link href="/contact">Contact</Link>
+          <Image
+            src={'/social/peerlist.svg'}
+            alt="peerlist-icon"
+            height={'15'}
+            width={'15'}
+            className="dark:invert"
+          ></Image>
+          <a href="https://peerlist.io/ronitk21">Peerlist</a>
         </Button>
       </div>
     </div>
