@@ -7,7 +7,7 @@ import { useRef } from 'react';
 import { Button } from '@/components/ui/button';
 
 export function ModeToggle() {
-  const { theme, setTheme, resolvedTheme } = useTheme();
+  const { setTheme, resolvedTheme } = useTheme();
   const buttonRef = useRef<HTMLButtonElement>(null);
 
   const toggleTheme = async () => {
@@ -46,7 +46,7 @@ export function ModeToggle() {
   };
 
   return (
-    <Button ref={buttonRef} variant="ghost" size="icon-sm" onClick={toggleTheme} className="z-20">
+    <Button ref={buttonRef} variant="outline" size="icon" onClick={toggleTheme} className="z-20">
       <Sun className="h-[1.2rem] w-[1.2rem] scale-100 rotate-0 transition-all dark:scale-0 dark:-rotate-90" />
       <Moon className="absolute h-[1.2rem] w-[1.2rem] scale-0 rotate-90 transition-all dark:scale-100 dark:rotate-0" />
       <span className="sr-only">Toggle theme</span>
