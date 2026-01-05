@@ -3,54 +3,105 @@ import Image from 'next/image';
 
 const skills = [
   {
-    src: '/skills/bun.png',
+    src: '/technologies/bun.svg',
     label: 'Bun',
   },
   {
-    src: '/skills/javascript.png',
+    src: '/technologies/javascript.svg',
     label: 'javascript',
   },
   {
-    src: '/skills/mongodb.png',
+    src: '/technologies/mongodb.svg',
     label: 'mongodb',
   },
   {
-    src: '/skills/nextjs.png',
+    src: '/technologies/nextjs.svg',
     label: 'nextjs',
   },
   {
-    src: '/skills/node.png',
+    src: '/technologies/nodejs.svg',
     label: 'node',
   },
   {
-    src: '/skills/postgresql.png',
+    src: '/technologies/postgresql.svg',
     label: 'postgresql',
   },
   {
-    src: '/skills/prisma.png',
+    src: '/technologies/prisma.svg',
     label: 'prisma',
   },
   {
-    src: '/skills/react.png',
+    src: '/technologies/react.svg',
     label: 'react',
   },
   {
-    src: '/skills/typescript.png',
+    src: '/technologies/typescript.svg',
     label: 'typescript',
+  },
+  {
+    src: '/technologies/git.svg',
+    label: 'git',
+  },
+  {
+    src: '/technologies/github.svg',
+    label: 'github',
+  },
+  {
+    src: '/technologies/aws.svg',
+    label: 'AWS',
+  },
+  {
+    src: '/technologies/express.svg',
+    label: 'express',
   },
 ];
 
 const SkillsSection = () => {
   return (
-    <div className="flex flex-wrap items-center gap-2 border align-middle">
-      {skills.map((item, index) => {
-        return (
-          <Button size={"sm"} key={index} variant={'outline'} className='capitalize'>
-            <Image src={item.src} alt={item.label} height={10} width={10} className='size-6'/>
-            {item.label}
-          </Button>
-        );
-      })}
+    <div className="flex w-full flex-col items-start gap-6 overflow-hidden py-3">
+      <div className="flex flex-col items-start">
+        <h1 className="text-[22px] font-bold tracking-tight">Techologies _</h1>
+        <p className="text-muted-foreground text-[15px] font-medium">
+          These are the tech stacks and tools I have worked with. But Tech stack doesn&apos;t really
+          matter, I can adapt to any tech stack quickly.
+        </p>
+      </div>
+      <div className="-mx-4 w-[calc(100%+2rem)] overflow-x-auto px-4 pb-2 sm:mx-0 sm:w-full sm:overflow-visible sm:px-0 sm:pb-0">
+        <div className="flex flex-col gap-2 sm:flex-row sm:flex-wrap">
+          <div className="flex gap-2 sm:contents">
+            {skills.slice(0, Math.ceil(skills.length / 2)).map((item, index) => (
+              <Button size={'xs'} key={index} variant={'outline'} className="shrink-0 gap-2 whitespace-nowrap capitalize">
+                <Image
+                  src={item.src}
+                  alt={item.label}
+                  height={15}
+                  width={15}
+                  className={
+                    /nextjs|github|express|expo|prisma/.test(item.label) ? 'dark:invert' : ''
+                  }
+                />
+                {item.label}
+              </Button>
+            ))}
+          </div>
+          <div className="flex gap-2 sm:contents">
+            {skills.slice(Math.ceil(skills.length / 2)).map((item, index) => (
+              <Button size={'xs'} key={index + Math.ceil(skills.length / 2)} variant={'outline'} className="shrink-0 whitespace-nowrap capitalize gap-2">
+                <Image
+                  src={item.src}
+                  alt={item.label}
+                  height={15}
+                  width={15}
+                  className={
+                    /nextjs|github|express|expo|prisma/.test(item.label) ? 'dark:invert' : ''
+                  }
+                />
+                {item.label}
+              </Button>
+            ))}
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
