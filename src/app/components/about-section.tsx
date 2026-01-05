@@ -8,42 +8,56 @@ import SocialSection from './social-section';
 
 const AboutSection = () => {
   return (
-    <div className="relative pt-40 sm:pt-48">
+    <div className="relative pt-38 sm:pt-52 py-4">
       {/* Avatar positioned relative to this container */}
       <div className="absolute top-18 left-0 z-10 flex w-full justify-between sm:top-30">
-        <Avatar className="h-28 w-28 border-4 border-white shadow-sm sm:h-32 sm:w-32">
+        <Avatar className="ring-muted h-36 w-36 shadow-sm ring-4 sm:h-32 sm:w-32">
           <AvatarImage src="/profile.jpg" />
           <AvatarFallback>RT</AvatarFallback>
         </Avatar>
-        <div className='pt-11 hidden sm:block'>
+        <div className="block pt-4 lg:hidden">
+          <LayoutTextFlip />
+        </div>
+        <div className="hidden pt-11 sm:block">
           <SocialSection />
         </div>
       </div>
 
-      <div className="my-4 space-y-3 pt-12 sm:my-5 sm:space-y-4 sm:pt-16">
-        <div className=''>
-          <div className="flex flex-col items-start gap-2 sm:flex-row sm:items-center sm:justify-between sm:gap-5">
+      <div className="my-4 space-y-3 pt-18 sm:my-5 sm:space-y-4 sm:pt-14">
+        <div className="flex flex-col items-start">
+          <div className="flex items-center justify-between gap-5">
             <div className="flex items-center gap-2.5">
-              <h1 className="font-bold text-3xl">Ronit Kedia</h1>
+              <h1 className="text-[33px] font-bold sm:text-3xl">Ronit Kedia</h1>
               {/* <NameWithPronunciation /> */}
             </div>
             <div className="hidden sm:block">
               <LayoutTextFlip />
             </div>
           </div>
-          <span className="text-muted-foreground mt-1 block tracking-wide sm:mt-0 text-sm">
+
+          <span className="-mt-2 text-muted-foreground block tracking-tight sm:mt-0">
             Computer Science Student | Full Stack Developer
           </span>
         </div>
 
-        <p className="text-muted-foreground my-5 text-sm leading-relaxed font-medium sm:mt-5 sm:text-base dark:text-zinc-300">
-          Im a full stack developer who loves building clean, modern websites and apps where
-          design, functionality. and performance meet. Currently pursuing a degree in Computer Science,
-        </p>
+        <div className="text-muted-foreground text my-5 flex flex-col items-start gap-4 leading-snug font-medium text-pretty sm:mt-5 sm:gap-2.5 sm:text-base">
+          <p>
+            Hey, I&apos;m Ronit, a full stack web developer with a
+            <span className="text-foreground italic"> passion for computer science. </span>I love
+            creating efficient and scalable web applications that
+            <span className="text-foreground italic"> solve real-world problems</span>.
+          </p>
+          {/* <p>
+            I&apos;m currently <span className="text-foreground">open for work</span>{' '}
+            for any kind of <span className="text-foreground">collaboration</span>,{' '}
+            <span className="text-foreground">freelance</span> or{' '}
+            <span className="text-foreground">full-time</span> opportunities.
+          </p> */}
+        </div>
 
-        <div className="flex items-center gap-2 sm:gap-3">
+        <div className="mt-5 flex items-center gap-2 sm:gap-3">
           <AnimateIcon animateOnHover>
-            <Button className="flex items-center gap-1.5 text-xs sm:gap-2 sm:text-sm">
+            <Button className="flex items-center gap-3 sm:gap-2 sm:text-sm" size={'lg'}>
               <Clock className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
               Hire Me
             </Button>
@@ -51,10 +65,11 @@ const AboutSection = () => {
           <AnimateIcon animateOnHover>
             <Button
               variant="outline"
-              className="flex items-center gap-1.5 text-xs sm:gap-2 sm:text-sm"
+              className="flex items-center gap-3 sm:gap-2 sm:text-sm"
+              size={'lg'}
             >
               <Send className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
-              Send an Email
+              Get in touch
             </Button>
           </AnimateIcon>
         </div>
