@@ -1,13 +1,16 @@
+'use client';
+
 import { ExternalLink } from '@/components/animate-ui/icons/external-link';
 import { AnimateIcon } from '@/components/animate-ui/icons/icon';
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useEffect, useRef, useState } from 'react';
 
 const projects = [
   {
     page: '/projects/nomoretutorials',
-    images: ['/nomoretutorials-1.webp'],
+    images: ['/nomoretutorials-1.webp', '/family-vault-1.webp', '/dailytick1.webp'],
     title: 'NoMoreTutorials',
     description:
       'An AI-powered platform that guides beginner and intermediate developers out of tutorial hell by providing personalized, mentor-style step-by-step instructions to build real, production-grade projects from scratch.',
@@ -22,8 +25,20 @@ const projects = [
     ],
   },
   {
+    page: '/projects/family-vault',
+    images: ['/family-vault-1.webp'],
+    title: 'Family Vault',
+    description: 'A secure app to manage sensitive information for your entire family',
+    techStack: [
+      { name: 'React Native', icon: '/technologies/react.svg' },
+      { name: 'Expo', icon: '/technologies/expo.svg' },
+      { name: 'TypeScript', icon: '/technologies/typescript.svg' },
+      { name: 'SQLite', icon: '/technologies/sqlite.svg' },
+    ],
+  },
+  {
     page: '/',
-    images: ['/portfolio-1.webp'],
+    images: ['/portfolio-1.webp', '/portfolio-2.webp', '/portfolio-3.webp'],
     title: 'Crazyfolio',
     description:
       'An AI-powered platform that guides beginner and intermediate developers out of tutorial hell by providing personalized, mentor-style step-by-step instructions to build real, production-grade projects from scratch.',
@@ -60,18 +75,6 @@ const projects = [
       { name: 'VS Code API', icon: '/technologies/vscode.svg' },
     ],
   },
-  {
-    page: '/projects/family-vault',
-    images: ['/family-vault-1.webp'],
-    title: 'Family Vault',
-    description: 'A secure app to manage sensitive information for your entire family',
-    techStack: [
-      { name: 'React Native', icon: '/technologies/react.svg' },
-      { name: 'Expo', icon: '/technologies/expo.svg' },
-      { name: 'TypeScript', icon: '/technologies/typescript.svg' },
-      { name: 'SQLite', icon: '/technologies/sqlite.svg' },
-    ],
-  },
 ];
 
 const shimmer = (w: number, h: number) => `
@@ -91,9 +94,87 @@ const shimmer = (w: number, h: number) => `
 const toBase64 = (str: string) =>
   typeof window === 'undefined' ? Buffer.from(str).toString('base64') : window.btoa(str);
 
+const ImageSlider = ({
+  images,
+  title,
+  index,
+}: {
+  images: string[];
+  title: string;
+  index: number;
+}) => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isHovering, setIsHovering] = useState(false);
+  const intervalRef = useRef<NodeJS.Timeout | null>(null);
+
+  useEffect(() => {
+    if (isHovering && images.length > 1) {
+      intervalRef.current = setInterval(() => {
+        setCurrentIndex(prevIndex => (prevIndex === images.length - 1 ? 0 : prevIndex + 1));
+      }, 1500);
+    } else {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+      }
+    }
+
+    return () => {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+      }
+    };
+  }, [isHovering, images.length]);
+
+  return (
+    <div
+      className="relative overflow-hidden rounded-lg"
+      onMouseEnter={() => setIsHovering(true)}
+      onMouseLeave={() => {
+        setIsHovering(false);
+        setCurrentIndex(0);
+      }}
+    >
+      {images.map((img, imgIndex) => (
+        <Image
+          key={imgIndex}
+          src={img}
+          alt={`${title} project screenshot ${imgIndex + 1}`}
+          height={800}
+          width={800}
+          className={`rounded-lg ring-[6px] transition-opacity duration-700 ${
+            imgIndex === currentIndex ? 'opacity-100' : 'absolute inset-0 opacity-0'
+          }`}
+          priority={index === 0 && imgIndex === 0}
+          loading={index === 0 && imgIndex === 0 ? 'eager' : 'lazy'}
+          sizes={
+            index === 0 ? '(max-width: 640px) 100vw, 800px' : '(max-width: 640px) 100vw, 400px'
+          }
+          placeholder="blur"
+          blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(800, 600))}`}
+          quality={80}
+        />
+      ))}
+
+      {/* Progress dots - only show if more than 1 image */}
+      {images.length > 1 && (
+        <div className="absolute right-3 bottom-3 flex gap-1.5">
+          {images.map((_, imgIndex) => (
+            <div
+              key={imgIndex}
+              className={`h-1.5 rounded-full transition-all duration-300 ${
+                imgIndex === currentIndex ? 'w-6 bg-white' : 'w-1.5 bg-white/50'
+              }`}
+            />
+          ))}
+        </div>
+      )}
+    </div>
+  );
+};
+
 const ProjectsSection = () => {
   return (
-    <div className="flex flex-col items-start space-y-6 ">
+    <div className="flex flex-col items-start space-y-6">
       <div className="">
         <h1 className="text-[22px] font-bold tracking-tight">Projects _</h1>
         <p className="text-muted-foreground text-[15px] font-medium">
@@ -110,46 +191,30 @@ const ProjectsSection = () => {
                   Featured Project
                 </span>
               )}
-              <Link href={item.page}>
-                {item.images && (
-                  <Image
-                    src={item.images[0]}
-                    alt={`${item.title} project screenshot`}
-                    height={800}
-                    width={800}
-                    className="rounded-lg ring-[6px]"
-                    priority={index === 0}
-                    loading={index === 0 ? 'eager' : 'lazy'}
-                    sizes={
-                      index === 0
-                        ? '(max-width: 640px) 100vw, 800px'
-                        : '(max-width: 640px) 100vw, 400px'
-                    }
-                    placeholder="blur"
-                    blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(800, 600))}`}
-                    quality={80}
-                  />
-                )}
+              <Link href={item.page} className="w-full">
+                <ImageSlider images={item.images} title={item.title} index={index} />
               </Link>
             </div>
             <div className="space-y-1 px-3 py-3">
               <div className="flex flex-col items-start justify-between gap-1">
                 <div className="flex w-full items-center justify-between">
                   <h2 className="text-lg font-bold sm:text-base">{item.title}</h2>
-                  <a href={item.link} className="shrink-0">
-                    <AnimateIcon
-                      animateOnHover
-                      className="group flex items-center gap-1 hover:underline hover:underline-offset-4"
-                    >
-                      <ExternalLink
-                        size={13}
-                        className="text-muted-foreground group-hover:text-primary"
-                      />
-                      <span className="text-muted-foreground group-hover:text-primary sm:text-sm">
-                        live link
-                      </span>
-                    </AnimateIcon>
-                  </a>
+                  {item.link && (
+                    <a href={item.link} className="shrink-0">
+                      <AnimateIcon
+                        animateOnHover
+                        className="group flex items-center gap-1 hover:underline hover:underline-offset-4"
+                      >
+                        <ExternalLink
+                          size={13}
+                          className="text-muted-foreground group-hover:text-primary"
+                        />
+                        <span className="text-muted-foreground group-hover:text-primary sm:text-sm">
+                          live link
+                        </span>
+                      </AnimateIcon>
+                    </a>
+                  )}
                 </div>
                 <p className="text-muted-foreground line-clamp-2 w-full text-sm font-medium sm:text-xs">
                   {item.description}
@@ -157,9 +222,9 @@ const ProjectsSection = () => {
               </div>
 
               <div className="mt-3 flex flex-wrap items-center gap-1.5">
-                {item.techStack.map((tech, index) => (
+                {item.techStack.map((tech, techIndex) => (
                   <Button
-                    key={index}
+                    key={techIndex}
                     variant={'secondary'}
                     size={'xs'}
                     className="border-border border capitalize"
