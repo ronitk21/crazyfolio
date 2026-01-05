@@ -58,7 +58,7 @@ const skills = [
 
 const SkillsSection = () => {
   return (
-    <div className="flex w-full flex-col items-start gap-6 overflow-hidden py-3">
+    <div className="flex w-full flex-col items-start gap-6 overflow-hidden">
       <div className="flex flex-col items-start">
         <h1 className="text-[22px] font-bold tracking-tight">Technologies _</h1>
         <p className="text-muted-foreground text-[15px] font-medium">

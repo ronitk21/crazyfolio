@@ -23,7 +23,7 @@ const projects = [
   },
   {
     page: '/',
-    images: ['/portfolio1.webp'],
+    images: ['/portfolio-1.webp'],
     title: 'Crazyfolio',
     description:
       'An AI-powered platform that guides beginner and intermediate developers out of tutorial hell by providing personalized, mentor-style step-by-step instructions to build real, production-grade projects from scratch.',
@@ -93,7 +93,7 @@ const toBase64 = (str: string) =>
 
 const ProjectsSection = () => {
   return (
-    <div className="flex flex-col items-start space-y-6 py-4">
+    <div className="flex flex-col items-start space-y-6 ">
       <div className="">
         <h1 className="text-[22px] font-bold tracking-tight">Projects _</h1>
         <p className="text-muted-foreground text-[15px] font-medium">
