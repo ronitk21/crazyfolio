@@ -8,9 +8,9 @@ import SocialSection from './social-section';
 
 const AboutSection = () => {
   return (
-    <div className="relative py-4 sm:py-0.5 pt-38 sm:pt-52">
+    <div className="relative py-4 sm:py-0.5 pt-46 sm:pt-64">
       {/* Avatar positioned relative to this container */}
-      <div className="absolute top-18 left-0 z-10 flex w-full justify-between sm:top-30">
+      <div className="absolute top-22 left-0 z-10 flex w-full justify-between sm:top-41">
         <Avatar className="ring-muted h-36 w-36 shadow-sm ring-4 sm:h-32 sm:w-32">
           <AvatarImage src="/profile.webp" />
           <AvatarFallback>RT</AvatarFallback>
