@@ -10,7 +10,7 @@ import { useEffect, useRef, useState } from 'react';
 const projects = [
   {
     page: '/projects/nomoretutorials',
-    images: ['/nomoretutorials-1.webp', '/family-vault-1.webp', '/dailytick1.webp'],
+    images: ['/nomoretutorials-1.webp'],
     title: 'NoMoreTutorials',
     description:
       'An AI-powered platform that guides beginner and intermediate developers out of tutorial hell by providing personalized, mentor-style step-by-step instructions to build real, production-grade projects from scratch.',
@@ -41,8 +41,8 @@ const projects = [
     images: ['/portfolio-1.webp', '/portfolio-2.webp', '/portfolio-3.webp'],
     title: 'Crazyfolio',
     description:
-      'An AI-powered platform that guides beginner and intermediate developers out of tutorial hell by providing personalized, mentor-style step-by-step instructions to build real, production-grade projects from scratch.',
-    link: 'https://www.ronitkedia.com',
+      'A modern, responsive developer portfolio built with Next.js and Tailwind CSS, featuring smooth animations, dark mode support, and an elegant design to showcase projects and skills.',
+    link: '/',
     techStack: [
       { name: 'NextJS', icon: '/technologies/nextjs.svg' },
       { name: 'React', icon: '/technologies/react.svg' },
@@ -68,8 +68,7 @@ const projects = [
     images: ['/tailwind-toolkit-1.webp'],
     title: 'Tailwind Toolkit',
     description:
-      'A lightweight Chrome extension that replaces the new tab with a clean daily checklist, helping users plantasks, track goals, and stay focused through a simple, distraction-free interface with automatic daily resets and local data storage',
-
+      ' A VS Code extension that provides plain-English tooltips for Tailwind CSS classes in React components.',
     techStack: [
       { name: 'Javascript', icon: '/technologies/javascript.svg' },
       { name: 'VS Code API', icon: '/technologies/vscode.svg' },
@@ -107,23 +106,39 @@ const ImageSlider = ({
   const [isHovering, setIsHovering] = useState(false);
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
+  // Separate effect for featured project (index 0) - always runs
   useEffect(() => {
-    if (isHovering && images.length > 1) {
+    if (index === 0 && images.length > 1) {
       intervalRef.current = setInterval(() => {
         setCurrentIndex(prevIndex => (prevIndex === images.length - 1 ? 0 : prevIndex + 1));
-      }, 1500);
-    } else {
+      }, 1500); // 1.5 seconds for featured project
+
+      return () => {
+        if (intervalRef.current) {
+          clearInterval(intervalRef.current);
+        }
+      };
+    }
+  }, [index, images.length]);
+
+  // Effect for other projects - only runs on hover
+  useEffect(() => {
+    if (index !== 0 && isHovering && images.length > 1) {
+      intervalRef.current = setInterval(() => {
+        setCurrentIndex(prevIndex => (prevIndex === images.length - 1 ? 0 : prevIndex + 1));
+      }, 2000);
+    } else if (index !== 0) {
       if (intervalRef.current) {
         clearInterval(intervalRef.current);
       }
     }
 
     return () => {
-      if (intervalRef.current) {
+      if (intervalRef.current && index !== 0) {
         clearInterval(intervalRef.current);
       }
     };
-  }, [isHovering, images.length]);
+  }, [isHovering, images.length, index]);
 
   return (
     <div
