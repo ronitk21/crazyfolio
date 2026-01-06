@@ -1,13 +1,12 @@
 'use client';
 
 import MaxWidthWrapper from '@/components/max-width-wrapper';
-import { ModeToggle } from '@/components/mode-toggle';
 import { Separator } from '@/components/ui/separator';
-import AboutSection from './components/about-section';
-import BlogSection from './components/blog-section';
-import ProjectsSection from './components/projects-section';
-import SkillsSection from './components/skills-section';
-import SocialSection from './components/social-section';
+import AboutSection from './_components/about-section';
+import BlogSection from './_components/blog-section';
+import Footer from './_components/footer';
+import ProjectsSection from './_components/projects-section';
+import SkillsSection from './_components/skills-section';
 
 export default function Home() {
   return (
@@ -36,9 +35,6 @@ export default function Home() {
       </div>
 
       <MaxWidthWrapper>
-        <div className="flex justify-end pt-4">
-          <ModeToggle />
-        </div>
         <AboutSection />
         {/* Additional content sections can go here */}
         <div className="pb-12 sm:pb-20">
@@ -48,6 +44,8 @@ export default function Home() {
           <ProjectsSection />
           <Separator className="my-6 sm:my-8" />
           <BlogSection />
+          <Separator className="my-6 sm:my-8" />
+          <Footer />
         </div>
       </MaxWidthWrapper>
     </div>
