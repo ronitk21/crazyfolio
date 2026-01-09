@@ -1,8 +1,16 @@
 import { ModeToggle } from '@/components/mode-toggle';
 import { ThemeProvider } from '@/components/theme-provider';
 import type { Metadata } from 'next';
+import { Instrument_Serif } from 'next/font/google';
 import { myFont } from './fonts';
 import './globals.css';
+
+
+const libre = Instrument_Serif({
+  subsets: ['latin'],
+  weight: ['400'],
+  variable: '--font-instrument',
+});
 
 export const metadata: Metadata = {
   title: 'Ronit Kedia',
@@ -16,7 +24,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${myFont.variable} relative h-screen font-sans antialiased`}>
+      <body className={`${myFont.variable} ${libre.variable} relative h-screen font-sans antialiased`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"

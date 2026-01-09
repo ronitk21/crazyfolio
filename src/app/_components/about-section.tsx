@@ -24,10 +24,10 @@ const AboutSection = () => {
       </div>
 
       <div className="my-4 space-y-3 pt-18 sm:my-5 sm:space-y-4 sm:pt-14">
-        <div className="flex flex-col items-start">
+        <div className="flex flex-col items-start gap-1.5 sm:-space-y-2.5">
           <div className="flex w-full items-center justify-between gap-5">
             <div className="flex items-center gap-2.5">
-              <h1 className="text-[33px] font-bold sm:text-3xl">Ronit Kedia</h1>
+              <h1 className="text-4xl font-instrument  sm:text-4xl">Ronit Kedia</h1>
               {/* <NameWithPronunciation /> */}
             </div>
             <div className="hidden sm:block">
@@ -35,7 +35,7 @@ const AboutSection = () => {
             </div>
           </div>
 
-          <span className="text-muted-foreground -mt-2 block tracking-tight sm:mt-0">
+          <span className="text-muted-foreground -mt-2 block tracking-tight sm:text-lg sm:mt-0">
             Computer Science Student | Full Stack Developer
           </span>
         </div>
