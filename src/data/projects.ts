@@ -1,7 +1,7 @@
 export const projects = [
   {
     page: '/projects/nomoretutorials',
-    images: ['/portfolio-1.webp', '/portfolio-2.webp', '/portfolio-3.webp'],
+    images: ['/nomoretutorials-3.webp', '/nomoretutorials-2.webp', '/nomoretutorials-1.webp'],
     title: 'NoMoreTutorials',
     description:
       'An AI-powered platform that guides beginner and intermediate developers out of tutorial hell by providing personalized, mentor-style step-by-step instructions to build real, production-grade projects from scratch.',

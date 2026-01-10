@@ -27,7 +27,7 @@ const AboutSection = () => {
         <div className="flex flex-col items-start gap-1.5 sm:-space-y-2.5">
           <div className="flex w-full items-center justify-between gap-5">
             <div className="flex items-center gap-2.5">
-              <h1 className="text-4xl font-instrument  sm:text-4xl">Ronit Kedia</h1>
+              <h1 className="text-4xl font-instrument sm:text-4xl">Ronit Kedia</h1>
               {/* <NameWithPronunciation /> */}
             </div>
             <div className="hidden sm:block">

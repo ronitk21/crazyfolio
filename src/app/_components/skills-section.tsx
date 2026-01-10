@@ -112,7 +112,7 @@ const SkillsSection = () => {
   return (
     <div className="flex w-full flex-col items-start gap-6 overflow-hidden">
       <div className="flex flex-col items-start">
-        <h1 className="text-2xl font-bold tracking-wide font-instrument">Technologies _</h1>
+        <h1 className="text-2xl  tracking-wide font-instrument font-bold dark:font-normal">Technologies _</h1>
         <p className="text-muted-foreground text-[15px] font-medium">
           These are the tech stacks and tools I have worked with. But Tech stack doesn&apos;t really
           matter, I can adapt to any tech stack quickly.

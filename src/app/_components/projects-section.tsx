@@ -10,7 +10,7 @@ const ProjectsSection = () => {
   return (
     <div className="flex flex-col items-start space-y-6">
       <div className="">
-        <h1 className="text-2xl font-bold tracking-wide font-instrument">Projects _</h1>
+        <h1 className="text-2xl tracking-wide font-instrument font-bold dark:font-normal">Projects _</h1>
         <p className="text-muted-foreground text-[15px] font-medium">
           A collection of projects I&apos;ve built to solve problems I&apos;ve faced. The goal was
           to learn production grade technologies and implementation of best practices.
