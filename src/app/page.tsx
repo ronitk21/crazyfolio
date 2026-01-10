@@ -1,12 +1,12 @@
-'use client';
+"use client";
 
-import MaxWidthWrapper from '@/components/max-width-wrapper';
-import { Separator } from '@/components/ui/separator';
-import AboutSection from './_components/about-section';
-import BlogSection from './_components/blog-section';
-import Footer from './_components/footer';
-import ProjectsSection from './_components/projects-section';
-import SkillsSection from './_components/skills-section';
+import MaxWidthWrapper from "@/components/max-width-wrapper";
+import { Separator } from "@/components/ui/separator";
+import AboutSection from "./_components/about-section";
+import BlogSection from "./_components/blog-section";
+import Footer from "./_components/footer";
+import ProjectsSection from "./_components/projects-section";
+import SkillsSection from "./_components/skills-section";
 
 export default function Home() {
   return (
@@ -44,9 +44,9 @@ export default function Home() {
           <ProjectsSection />
           <Separator className="my-6 sm:my-8" />
           <BlogSection />
-          <Separator className="my-6 sm:my-8" />
-          <Footer />
         </div>
+        <Separator className="my-4 sm:my-4" />
+        <Footer />
       </MaxWidthWrapper>
     </div>
   );
