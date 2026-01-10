@@ -2,7 +2,9 @@ import { ArrowLeft } from '@/components/animate-ui/icons/arrow-left';
 import { AnimateIcon } from '@/components/animate-ui/icons/icon';
 import MaxWidthWrapper from '@/components/max-width-wrapper';
 import { Button } from '@/components/ui/button';
+import { Separator } from '@/components/ui/separator';
 import Link from 'next/link';
+import Footer from '../_components/footer';
 
 const ProjectPageLayout = ({ children }: { children: React.ReactNode }) => {
   return (
@@ -23,6 +25,8 @@ const ProjectPageLayout = ({ children }: { children: React.ReactNode }) => {
           </Link>
           {children}
         </main>
+        <Separator className="my-6 sm:my-8" />
+        <Footer />
       </MaxWidthWrapper>
     </div>
   );

@@ -32,7 +32,9 @@ const ProjectsSection = () => {
             <div className="space-y-1 px-3 py-3">
               <div className="flex flex-col items-start justify-between gap-1">
                 <div className="flex w-full items-center justify-between">
-                  <h2 className="text-lg font-bold sm:text-base">{item.title}</h2>
+                  <Link href={item.page} >
+                    <h2 className="text-lg font-bold sm:text-base">{item.title}</h2>
+                  </Link>
                   {item.link && (
                     <a href={item.link} className="shrink-0">
                       <AnimateIcon
