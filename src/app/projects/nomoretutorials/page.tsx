@@ -27,7 +27,7 @@ const ProjectPage = () => {
             </div>
           </div>
           <div className=''>
-            <a href='https://app.nomoretutorials.com'>
+            <a href='https://app.nomoretutorials.com' className='block sm:hidden'>
                 <AnimateIcon
                         animateOnHover
                         className="group flex items-center gap-1 hover:underline hover:underline-offset-4"
