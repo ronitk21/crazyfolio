@@ -1,20 +1,20 @@
-import { ModeToggle } from '@/components/mode-toggle';
-import { ThemeProvider } from '@/components/theme-provider';
-import type { Metadata } from 'next';
-import { Instrument_Serif } from 'next/font/google';
-import { myFont } from './fonts';
-import './globals.css';
-
+import { ModeToggle } from "@/components/mode-toggle";
+import { ThemeProvider } from "@/components/theme-provider";
+import type { Metadata } from "next";
+import { Instrument_Serif } from "next/font/google";
+import { myFont } from "./fonts";
+import "./globals.css";
+import { Analytics } from "@vercel/analytics/next";
 
 const libre = Instrument_Serif({
-  subsets: ['latin'],
-  weight: ['400'],
-  variable: '--font-instrument',
+  subsets: ["latin"],
+  weight: ["400"],
+  variable: "--font-instrument",
 });
 
 export const metadata: Metadata = {
-  title: 'Ronit Kedia',
-  description: 'Full Stack Developer',
+  title: "Ronit Kedia",
+  description: "Full Stack Developer",
 };
 
 export default function RootLayout({
@@ -24,7 +24,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${myFont.variable} ${libre.variable} relative h-screen font-sans antialiased`}>
+      <body
+        className={`${myFont.variable} ${libre.variable} relative h-screen font-sans antialiased`}
+      >
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
@@ -37,6 +39,7 @@ export default function RootLayout({
           </div>
           <main>{children}</main>
         </ThemeProvider>
+        <Analytics />
       </body>
     </html>
   );
