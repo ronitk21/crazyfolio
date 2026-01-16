@@ -10,7 +10,7 @@ const BlogsPageLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <div>
       <MaxWidthWrapper>
-        <div className="flex flex-col h-lvh">
+        <div className="flex flex-col min-h-lvh">
           <main className="flex-1 my-5 flex w-full flex-col items-start space-y-5 sm:my-5">
             <Link href={"/"}>
               <Button
@@ -21,12 +21,11 @@ const BlogsPageLayout = ({ children }: { children: React.ReactNode }) => {
                 <AnimateIcon animateOnHover>
                   <ArrowLeft />
                 </AnimateIcon>
-                Home _
+                Back to Home _
               </Button>
             </Link>
             {children}
           </main>
-          <Separator className="my-4" />
           <Footer />
         </div>
       </MaxWidthWrapper>

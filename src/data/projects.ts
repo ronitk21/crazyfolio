@@ -60,9 +60,9 @@ export const projects = [
     ],
   },
   {
-    page: "/projects/tailwind-toolkit",
+    page: "/projects/tailwind-topltip",
     images: ["/tailwind-toolkit-1.webp"],
-    title: "Tailwind Toolkit",
+    title: "Tailwind Tooltip",
     description:
       " A VS Code extension that provides plain-English tooltips for Tailwind CSS classes in React components.",
     techStack: [

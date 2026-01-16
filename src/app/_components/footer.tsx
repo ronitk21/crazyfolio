@@ -1,8 +1,10 @@
+import { Separator } from "@/components/ui/separator";
 import { Copyright } from "lucide-react";
 
 const Footer = () => {
   return (
-    <footer className="flex flex-col items-center mb-5">
+    <footer className="flex flex-col items-center space-y-4 mb-4">
+      <Separator />
       <div className="flex items-center gap-1">
         <Copyright className="text-muted-foreground size-4" />
         <span className="text-muted-foreground text-sm font-medium">

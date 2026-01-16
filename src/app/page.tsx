@@ -45,7 +45,6 @@ export default function Home() {
           <Separator className="my-6 sm:my-8" />
           <BlogSection />
         </div>
-        <Separator className="my-4 sm:my-4" />
         <Footer />
       </MaxWidthWrapper>
     </div>
