@@ -33,6 +33,17 @@ export const projects = [
     ],
   },
   {
+    page: "/projects/tailwind-topltip",
+    images: ["/tailwind-toolkit-1.webp"],
+    title: "Tailwind Tooltip",
+    description:
+      " A VS Code extension that provides plain-English tooltips for Tailwind CSS classes in React components.",
+    techStack: [
+      { name: "Javascript", icon: "/technologies/javascript.svg" },
+      { name: "VS Code API", icon: "/technologies/vscode.svg" },
+    ],
+  },
+  {
     page: "/",
     images: ["/portfolio-1.webp", "/portfolio-2.webp", "/portfolio-3.webp"],
     title: "Crazyfolio",
@@ -57,17 +68,6 @@ export const projects = [
       { name: "HTML", icon: "/technologies/html.svg" },
       { name: "CSS", icon: "/technologies/css.svg" },
       { name: "Browser Extension API", icon: "/technologies/chromium.svg" },
-    ],
-  },
-  {
-    page: "/projects/tailwind-topltip",
-    images: ["/tailwind-toolkit-1.webp"],
-    title: "Tailwind Tooltip",
-    description:
-      " A VS Code extension that provides plain-English tooltips for Tailwind CSS classes in React components.",
-    techStack: [
-      { name: "Javascript", icon: "/technologies/javascript.svg" },
-      { name: "VS Code API", icon: "/technologies/vscode.svg" },
     ],
   },
 ];
