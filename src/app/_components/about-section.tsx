@@ -67,7 +67,7 @@ const AboutSection = () => {
         </div>
 
         <div className="mt-5 flex items-center gap-2 sm:gap-3">
-          <Link href={"/hire"}>
+          {/* <Link href={"/hire"}>
             <AnimateIcon animateOnHover>
               <Button
                 className="flex items-center gap-3 sm:gap-2 sm:text-sm"
@@ -77,7 +77,7 @@ const AboutSection = () => {
                 Hire Me
               </Button>
             </AnimateIcon>
-          </Link>
+          </Link> */}
           <Link href="/contact">
             <AnimateIcon animateOnHover>
               <Button
